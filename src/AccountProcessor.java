@@ -37,14 +37,16 @@ public class AccountProcessor {
             throw new RuntimeException(e);
         }
 
-        // Sort and print each array
-        for (Map.Entry<String, List<String>> entry : accountMap.entrySet()) {
-            String key = entry.getKey();
-            List<String> accounts = entry.getValue();
-            // Sorting the list of account numbers
-            Collections.sort(accounts);
-            // Printing the arrays
-            System.out.println("Array for accounts starting with " + key + ": " + accounts);
-        }
+        // Sort the keys numerically and print the arrays
+        accountMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.comparingInt(Integer::parseInt))) // Sort by numeric value of key
+                .forEach(entry -> {
+                    String key = entry.getKey();
+                    List<String> accounts = entry.getValue();
+                    // Sort the list of account numbers
+                    Collections.sort(accounts);
+                    // Print the arrays
+                    System.out.println("Array for accounts starting with " + key + ": " + accounts);
+                });
     }
 }
