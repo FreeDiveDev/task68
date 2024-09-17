@@ -43,9 +43,8 @@ public class AccountProcessor {
                 .forEach(entry -> {
                     String key = entry.getKey();
                     List<String> accounts = entry.getValue();
-                    // Sort the list of account numbers
+                    
                     Collections.sort(accounts);
-                    // Print the arrays
                     System.out.println("Array for accounts starting with " + key + ": " + accounts);
                 });
     }
